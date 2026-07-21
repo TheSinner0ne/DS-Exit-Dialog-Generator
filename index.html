@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DroidScript Dialog Generator</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>DroidScript Dialog Generator</h1>
+        <p>Live preview your custom exit dialog and generate production code.</p>
+    </header>
+
+    <main class="app-container">
+        
+        <!-- Controls Sidebar -->
+        <section class="control-panel">
+            <div class="panel-header">
+                <h2>Configuration</h2>
+                <button id="resetPresetBtn" class="preset-badge">Reset Custom Theme</button>
+            </div>
+
+            <hr class="divider">
+
+            <h3>App Logo / Top Icon</h3>
+            <div class="form-group">
+                <label for="useAppIcon">Show Top App Icon</label>
+                <select id="useAppIcon">
+                    <option value="false" selected>Disabled</option>
+                    <option value="true">Enabled (Centered Top Logo)</option>
+                </select>
+            </div>
+
+            <div id="appIconGroup" class="form-group-inline hidden">
+                <div class="form-group">
+                    <label for="appIconPath">Logo Path</label>
+                    <input type="text" id="appIconPath" value="Img/logo.png" placeholder="Img/logo.png">
+                </div>
+                <div class="form-group">
+                    <label for="appIconSize">Width (Fraction)</label>
+                    <input type="text" id="appIconSize" value="0.16" placeholder="0.16">
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <h3>Title & Message Content</h3>
+            <div class="form-group">
+                <label for="iconType">Title Icon Mode</label>
+                <select id="iconType">
+                    <option value="remix" selected>Remixicon (.ttf Font File)</option>
+                    <option value="fontawesome">Font Awesome (Built-in DroidScript)</option>
+                    <option value="none">None (Text Only)</option>
+                </select>
+            </div>
+
+            <div id="remixGroup" class="form-group">
+                <label for="iconUnicode">Title Icon Unicode (Hex)</label>
+                <input type="text" id="iconUnicode" value="\uEA4A" placeholder="\uEA4A">
+            </div>
+
+            <div id="faGroup" class="form-group hidden">
+                <label for="faTag">FontAwesome Tag</label>
+                <input type="text" id="faTag" value="[fa-exclamation-triangle]" placeholder="[fa-warning]">
+            </div>
+
+            <div class="form-group">
+                <label for="titleText">Title Text</label>
+                <input type="text" id="titleText" value="TERMINATE?">
+            </div>
+
+            <div class="form-group">
+                <label for="msgText">Message Text</label>
+                <textarea id="msgText" rows="3">Connection will be severed. Do you want to close this instance?</textarea>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="cancelText">Cancel Text</label>
+                    <input type="text" id="cancelText" value="ABORT">
+                </div>
+                <div class="form-group">
+                    <label for="exitText">Exit Text</label>
+                    <input type="text" id="exitText" value="CONFIRM">
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <h3>Background & Gradient</h3>
+            <div class="form-group">
+                <label for="bgType">Background Fill Type</label>
+                <select id="bgType">
+                    <option value="solid" selected>Solid Color</option>
+                    <option value="gradient">Linear Gradient</option>
+                </select>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="bgColor">Color 1 (Main/Start)</label>
+                    <input type="color" id="bgColor" value="#1E1E2E">
+                </div>
+                <div id="gradColorGroup" class="form-group hidden">
+                    <label for="bgColor2">Color 2 (Gradient End)</label>
+                    <input type="color" id="bgColor2" value="#0F0F1A">
+                </div>
+            </div>
+
+            <div id="gradOrientGroup" class="form-group hidden">
+                <label for="gradOrient">Gradient Orientation</label>
+                <select id="gradOrient">
+                    <option value="Top-Bottom" selected>Top to Bottom</option>
+                    <option value="Left-Right">Left to Right</option>
+                    <option value="TL-BR">Top-Left to Bottom-Right</option>
+                    <option value="BL-TR">Bottom-Left to Top-Right</option>
+                </select>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="titleColor">Title Color</label>
+                    <input type="color" id="titleColor" value="#00FF66">
+                </div>
+                <div class="form-group">
+                    <label for="msgColor">Message Color</label>
+                    <input type="color" id="msgColor" value="#FFFFFF">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="btnRadius">Corner Radius (px)</label>
+                <input type="number" id="btnRadius" value="12" min="0" max="30">
+            </div>
+
+            <hr class="divider">
+
+            <h3>Button Styling</h3>
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="cancelBg">Cancel Fill</label>
+                    <input type="color" id="cancelBg" value="#2A2A3C">
+                </div>
+                <div class="form-group">
+                    <label for="cancelTextClr">Cancel Text Color</label>
+                    <input type="color" id="cancelTextClr" value="#89B4FA">
+                </div>
+            </div>
+
+            <div class="form-group-inline">
+                <div class="form-group">
+                    <label for="exitBg">Exit Fill</label>
+                    <input type="color" id="exitBg" value="#F38BA8">
+                </div>
+                <div class="form-group">
+                    <label for="exitTextClr">Exit Text Color</label>
+                    <input type="color" id="exitTextClr" value="#11111B">
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Preview and Code Output -->
+        <section class="preview-panel">
+            
+            <div class="preview-section">
+                <h2>Live Canvas Preview</h2>
+                <div class="device-viewport">
+                    <div id="previewDialog" class="dialog-card">
+                        <div id="prevAppIconContainer" class="app-icon-container hidden">
+                            <img id="prevAppIcon" src="Img/logo.png" alt="App Icon" class="app-icon-img" onerror="this.style.display='none'">
+                        </div>
+                        <div id="prevTitle" class="dialog-title">&#xEA4A; TERMINATE?</div>
+                        <div id="prevMsg" class="dialog-msg">Connection will be severed. Do you want to close this instance?</div>
+                        <div class="dialog-actions">
+                            <button id="prevCancelBtn" class="dialog-btn">ABORT</button>
+                            <button id="prevExitBtn" class="dialog-btn">CONFIRM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <h2>Generated DroidScript Code</h2>
+                    <button id="copyBtn" class="action-btn">Copy Code</button>
+                </div>
+                <pre><code id="codeOutput"></code></pre>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

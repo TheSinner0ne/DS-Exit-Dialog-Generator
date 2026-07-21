@@ -1,0 +1,298 @@
+:root {
+    --bg-primary: #0F172A;
+    --bg-surface: #1E293B;
+    --accent-color: #38BDF8;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border-color: #475569;
+    --radius: 8px;
+    --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font);
+    padding: clamp(12px, 3vw, 24px);
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0 8px;
+}
+
+.app-header h1 {
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+.app-header p {
+    color: var(--text-muted);
+    font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+    margin-top: 6px;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.control-panel,
+.preview-section,
+.code-section {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: clamp(12px, 3vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.panel-header h2 {
+    font-size: 1.1rem;
+}
+
+.preset-badge {
+    background-color: var(--bg-primary);
+    color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+}
+
+.preset-badge:hover {
+    border-color: var(--accent-color);
+    background-color: var(--border-color);
+}
+
+.preview-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 4px 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.form-group-inline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    font-family: inherit;
+}
+
+input[type="color"] {
+    background: none;
+    border: 1px solid var(--border-color);
+    height: 42px;
+    padding: 2px;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.device-viewport {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.dialog-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    word-break: break-word;
+    transition: background 0.2s ease;
+}
+
+/* Centered Top App Icon Styling */
+.app-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.app-icon-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+
+.dialog-title {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-weight: bold;
+}
+
+.dialog-msg {
+    font-size: clamp(0.85rem, 3vw, 0.95rem);
+    line-height: 1.4;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.dialog-btn {
+    padding: 8px 16px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 38px;
+    font-size: 0.85rem;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-primary);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 40px;
+    transition: opacity 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+pre {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 0.8rem;
+    max-height: 340px;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 360px) {
+    .dialog-actions {
+        flex-direction: column;
+    }
+    
+    .dialog-btn {
+        width: 100%;
+    }
+}
+
+@media (min-width: 880px) {
+    .app-container {
+        grid-template-columns: 360px 1fr;
+        align-items: start;
+    }
+
+    .control-panel {
+        position: sticky;
+        top: 20px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+    
+    .action-btn {
+        width: auto;
+    }
+}
